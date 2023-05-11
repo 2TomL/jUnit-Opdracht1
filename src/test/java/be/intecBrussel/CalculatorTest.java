@@ -3,6 +3,9 @@ package be.intecBrussel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 class CalculatorTest {
     Calculator calculator;
 
@@ -12,36 +15,48 @@ class CalculatorTest {
     }
 
     @Test
-    public void testPositiveNumber() {
-        int number1 = 10;
+    public void testReturnPositiveNumber() {
+        String number1 = "10";
         String result1 = calculator.checkNumberPosNeg(number1);
-        System.out.println("Number 1: " + result1);
+        System.out.println("Input: \""+number1+"Number positive: " + result1);
     }
 
     @Test
-    public void testNegativeNumber() {
-        int number2 = -10;
+    public void testReturnNegativeNumber() {
+        String number2 = "-10";
         String result2 = calculator.checkNumberPosNeg(number2);
-        System.out.println("Number 2: " + result2);
+        System.out.println("Input: \""+number2+"Number negative: " + result2);
     }
 
     @Test
-    public void testZeroNumber() {
-        int number3 = 0;
+    public void testReturnZeroNumber() {
+        String number3 = "0";
         String result3 = calculator.checkNumberPosNeg(number3);
-        System.out.println("Number 3: " + result3);
+        System.out.println("Input: \""+number3+ "Number zero: " + result3);
+    }
+    @Test
+    public void testReturnEmpty(){
+        String input = " ";
+        String result = calculator.checkNumberPosNeg(input);
+        System.out.println("Input: \"" + input + "\", Result: " + result);
     }
 
     @Test
     public void testCheckNumberEvOdisEven() {
         int number4 = 7;
         String result4 = calculator.checkNumberEvOd(number4);
-        System.out.println("Number 4: "+result4);
+        System.out.println("Number even: "+result4);
     }
     @Test
     public void testCheckNumberEvOdisOdd() {
         int number5 = 20;
         String result5 = calculator.checkNumberEvOd(number5);
-        System.out.println("Number 5" + result5);
+        System.out.println("Number odd: " + result5);
+    }
+    @Test
+    public void testCheckNumberEvOdisEmptyButWillNeverBeEmptyHahaha(){
+        String number6 = "Empty space.";
+        String result6 = calculator.checkNumberEvOd(null);
+        assertEquals(number6,result6);
     }
 }
